@@ -2,9 +2,9 @@
   let sliding = false;
 
   function slide(x) {
-    let transform = Math.max(0,(Math.min(x, document.querySelector('.ct').offsetWidth)));
+    let transform = Math.max(8,(Math.min(x, document.querySelector('.ct').offsetWidth-2)));
     document.querySelector('.ct_disc').style.width = transform + "px";
-    document.querySelector('.ct_slider').style.left = transform-5 + "px";
+    document.querySelector('.ct_slider').style.left = transform-4 + "px";
   }
 
   slide(document.querySelector('.ct').offsetWidth/2)
@@ -19,6 +19,9 @@
   document.body.addEventListener('moumouseleave', ()=>{
     sliding = false;
   })
+  document.querySelector('.ct_disc').addEventListener('click',()=>{
+    slide(850)
+  })
 
   document.body.addEventListener('mousemove', (e)=>{
     if (!sliding) return;
@@ -26,6 +29,4 @@
     x -= document.querySelector('.ct').getBoundingClientRect().left;
     slide(x);
   });
-
-
 })()
